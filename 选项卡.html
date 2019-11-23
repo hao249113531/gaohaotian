@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 625px;
+            margin: 30px auto;
+        }
+        .top{
+            position: relative;
+            width: 625px;
+            height: 350px;
+            overflow: hidden;
+        }
+        .top ul{
+            width: 500%;
+            height: 350px;
+            position: absolute;
+            left: 0;top:0;
+        }
+        .top ul li{
+            width: 625px;
+            height: 350px;
+            float: left;
+            display: none;
+        }
+        .top ul .show{
+            display: block;
+        }
+        .top ul li img{
+            height: 350px;
+            width: 625px;
+        }
+        .top .text{
+            height: 40px;
+            line-height: 40px;
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%;
+        }
+        .top .text h6{
+            float: left;
+            margin-left: 13px;
+        }
+        .top .text p{
+            float: right;
+            margin-right: 7px;
+        }
+        .bottom{
+            height: 64px;
+            margin-top: 5px;
+            position: relative;
+        }
+        .bottom ul{
+            width: 500%;
+            height: 64px;
+            position: absolute;
+            left: 19px; top:0;
+        }
+        .bottom ul li{
+            width: 115px;
+            height: 64px;
+            float: left;
+            margin-right: 3px;
+            position: relative;
+        }
+        .bottom ul li img{
+            width: 115px;
+            height: 64px;
+            
+        }
+        .bottom ul li span{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.8);
+            position: absolute;
+            left: 0; top: 0;
+        }
+        .bottom ul .active span{
+            background-color: rgba(0,0,0,0);
+        }
+        .bottom ul li:hover span{
+            background-color: rgba(0,0,0,0);
+        }
+    </style>
+
+    <script>
+        window.onload = function (){
+
+            var oul = document.getElementById('oul');
+            var oli = oul.getElementsByTagName('li');
+
+            var aul = document.getElementById('aul');
+            var ali = aul.getElementsByTagName('li');
+
+            var text1 = document.getElementById('text1');
+
+            var onmb = document.getElementById('nmb');
+
+            // var arr = ['1','2','3','4','5'];
+            var arr = ['我爱北京天安门','北京欢迎您','啊， 啊，五环','你比四环多一环','啊，啊，你比六少一环'];
+
+              
+
+            // innerText   innerHTML  
+
+            // text1.innerHTML = '全网数据优化一班<span></span>'
+
+
+            for(i=0;i<oli.length;i++){
+                oli[i].index = i;
+                oli[i].onmouseover = function (){
+                    for(i=0;i<oli.length;i++){
+                        oli[i].className = '';
+                        ali[i].style.display = 'none'
+                    }
+
+                    this.className = 'active';
+                    ali[this.index].style.display = 'block'
+
+                    text1.innerHTML = arr[this.index];
+
+                    onmb.innerHTML = this.index+1 + '/5';
+                }        
+
+            }
+         
+
+
+
+        }
+        
+    </script>
+</head>
+<body>
+
+
+    <div class="box">
+
+        <div class="top">
+            <ul id="aul">
+                <li class="show"><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+                <li><img src="img/5.jpg" alt=""></li>
+            </ul>
+            <div class="text">
+                <h6 id="text1">我爱北京天安门 </h6>
+                <p id="nmb">1/5</p>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <ul id="oul">
+                <li class="active"><img src="img/1.jpg" alt=""><span></span></li>
+                <li><img src="img/2.jpg" alt=""><span></span></li>
+                <li><img src="img/3.jpg" alt=""><span></span></li>
+                <li><img src="img/4.jpg" alt=""><span></span></li>
+                <li><img src="img/5.jpg" alt=""><span></span></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
